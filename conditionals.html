@@ -30,7 +30,7 @@
 	<p id="commentary"></p>
 	<p id="commentary2"></p>
 	<label for="windSpeed">Wind speed</label>
-	<input type="range" min="0" max="100" id="windSpeed" />
+	<input type="range" min="0" max="100" step="20" id="windSpeed" />
 	<p id="windComment"></p>
 
 	<p id="breakTime"></p>
@@ -114,7 +114,9 @@
 			// Weather icons by Cole Bemis - https://feathericons.com/, MIT, https://commons.wikimedia.org/w/index.php?curid=60153354
 		}
 		/* STEP 5: Switch statements
-		Sometimes listing a series of conditions and the code that might be executed in each case is the friendliest way to structure your conditional */
+		Sometimes listing a series of conditions and the code 
+		that might be executed in each case is the friendliest way to structure 
+		your conditional */
 
 		var windSpeed = document.querySelector('#windSpeed');
 		var windComment = document.querySelector('#windComment');
@@ -122,29 +124,36 @@
 		windSpeed.addEventListener('change', getWindSpeed);
 
 		function getWindSpeed() {
+			console.log("Spinner is working.");
 			var speed = Number(windSpeed.value);
 			// STEP 5a: Build the SWITCH code block
-
-			// STEP 5b: Build out three cases, followed by a default
-
-			windComment.textContent = speed + 'km/h - Holy schmoly! Hold on to your hat';
-
-
-			windComment.textContent = speed + 'km/h - It\'s a-howling out there!';
-
-
-			windComment.textContent = speed + 'km/h - Slightly breezy.';
-
-
-			windComment.textContent = speed + 'km/h - Calm as can be.';
-
+			switch (speed) {
+				// STEP 5b: Build out three cases, followed by a default
+				case 100:
+					windComment.textContent = speed + 'km/h - Holy schmoly! Hold on to your hat';
+					break;
+				case 80:
+					windComment.textContent = speed + 'km/h - It\'s a-howling out there!';
+					break;
+				case 60:
+					windComment.textContent = speed + 'km/h - Slightly breezy.';
+					break;
+				case 40:
+					windComment.textContent = speed + 'km/h - Still not good.';
+					break;
+				case 20:
+					windComment.textContent = speed + 'km/h - Somewhat better!';
+					break;
+				default:
+					windComment.textContent = speed + 'km/h - Calm as can be.';
+			}
 		} // End of setWeather() function
 
 		/* STEP 6: Ternary operator
 		This piece of syntax is a bit less typing, but it is harder to read */
 		var breakMessage = document.querySelector('#breakTime');
-		var coffeeBreak = true;
-
+		var coffeeBreak = false;
+		coffeeBreak ? (breakMessage.textContent = "Yea! It's coffee break") : (breakMessage.textContent = "Ohh no!")
 
 		// This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals
 	</script>
