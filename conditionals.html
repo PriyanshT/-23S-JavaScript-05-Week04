@@ -28,6 +28,7 @@
 		<img src="" alt="" id="weatherIcon" width="50" height="50" />
 	</p>
 	<p id="commentary"></p>
+	<p id="commentary2"></p>
 	<label for="windSpeed">Wind speed</label>
 	<input type="range" min="0" max="100" id="windSpeed" />
 	<p id="windComment"></p>
@@ -57,6 +58,7 @@
 		var icon = document.querySelector('#weatherIcon');
 		var temp = document.querySelector('#temp');
 		var comments = document.querySelector('#commentary');
+		var comments2 = document.querySelector('#commentary2');
 
 		/* STEP 2a: Add an event listener for the 'change' event that invokes 
 		the setWeather() function below */
@@ -92,19 +94,21 @@
 
 			/* STEP 4: Logical operators - and, or, not */
 			// STEP 4a: AND - &&
-			if (true) {
+			if (choice === "sunny" && temperature < 15) {
 				comments.textContent = 'It is ' + temperature + ' degrees outside - that\'s a bit cool.';
 				// STEP 4b: AND, once again - &&
-			} else if (true) {
+			} else if (choice === "sunny" && temperature >= 15) {
 				comments.textContent = 'It is ' + temperature + ' degrees outside — time to find your sunglasses!';
 				// STEP 4c: OR - ||
-			} else if (true) {
+			} else if (choice === "rainy" || choice === "windy") {
 				comments.textContent = 'The weather today is a bit dreary.';
-				// STEP 4d: NOT - !
-			} else if (true) {
-				comments.textContent = 'It\'s a cold and miserable day. Bundle up!';
+			}
+
+			//STEP 4 d: NOT - !
+			if (choice != "rainy") {
+				comments2.textContent = 'Oh Yes. It\'s not raining. Let\'s go!';
 			} else {
-				comments.textContent = 'It\'s a miserable day but at least it\'s not too cold.';
+				comments2.textContent = 'It\'s a miserable day it\'s raining.';
 			}
 
 			// Weather icons by Cole Bemis - https://feathericons.com/, MIT, https://commons.wikimedia.org/w/index.php?curid=60153354
