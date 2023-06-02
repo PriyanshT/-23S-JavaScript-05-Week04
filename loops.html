@@ -54,10 +54,19 @@
 			var searchName = input.value;
 			input.value = '';
 			input.focus();
+			//searchName = searchName.toLowerCase();
 			/* STEP 2a: Create a FOR loop to iterate through the cities array */
-
-			/* STEP 2b: Build an IF/ELSE conditional that compares searchName with cities[i] */
-
+			for (let i = 0; i < cities.length; i++) {
+				/* STEP 2b: Build an IF/ELSE conditional that compares 
+				searchName with cities[i] */
+				if (cities[i] === searchName) {
+					result.textContent = `${searchName} is in the list.`;
+					break;
+				} else {
+					result.textContent = `${searchName} is not in the list.`;
+					break;
+				}
+			}
 		});
 
 
@@ -67,10 +76,14 @@
 		var num = 50;
 		for (var i = 1; i <= num; i++) {
 			var sqRoot = Math.sqrt(i);
-			/* STEP 3a: Build an IF statement that checks whether the square root of the number is NOT an integer */
-			if (true) {
-				/* STEP 3b: If the square root of the number is not an integer, we don't want to output it to the paragraph, so skip the rest of the instructions inside this loop and go back up to the FOR, using 'continue' */
-
+			/* STEP 3a: Build an IF statement that checks whether the 
+			square root of the number is NOT an integer */
+			if (!Number.isInteger(sqRoot)) {
+				/* STEP 3b: If the square root of the number is not an integer, 
+				we don't want to output it to the paragraph, 
+				so skip the rest of the instructions inside this loop and 
+				go back up to the FOR, using 'continue' */
+				continue;
 			}
 			numberList.textContent += i + ' ';
 		}
@@ -79,14 +92,30 @@
 
 		i = 0;
 		var outputWhile = '';
-		/* STEP 4a: WHILE loop to iterate through the cities array (created above in STEP 2) */
-
+		/* STEP 4a: WHILE loop to iterate through the cities array 
+		(created above in STEP 2) */
+		while (i < cities.length) {
+			if (i === courses.length - 1) {
+				outputWhile += `and ${courses[i]}`;
+			} else {
+				outputWhile += `${courses[i]}, `;
+			}
+			i++;
+		}
 		console.log(outputWhile);
 
-		//i = 0;
+		i = 0;
 		var outputDo = '';
-		/* STEP 4b: DO/WHILE loop - grab the above IF/ELSE and the 'i++', then create the very same output with DO/WHILE (uncomment the above 'i = 0', first) */
-
+		/* STEP 4b: DO/WHILE loop - grab the above IF/ELSE and the 
+		'i++', then create the very same output with DO/WHILE (uncomment the above 'i = 0', first) */
+		do {
+			if (i === courses.length - 1) {
+				outputDo += `and ${courses[i]}`;
+			} else {
+				outputDo += `${courses[i]}, `;
+			}
+			i++;
+		} while (i < cities.length)
 		console.log(outputDo);
 		/* …now try to loop through the same array backwards! */
 
