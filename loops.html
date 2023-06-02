@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8" />
 	<title>Loops | COMP1073 Client-Side JavaScript</title>
@@ -8,7 +9,8 @@
 
 <body>
 	<h1>Loops</h1>
-	<p>Often, a program or script will need to be able to do something repetitively. Building these looping structures and devising ways to decide when to stop or exit them is a critical tool for your client-side toolbox.</p>
+	<p>Often, a program or script will need to be able to do something repetitively. Building these looping structures
+		and devising ways to decide when to stop or exit them is a critical tool for your client-side toolbox.</p>
 
 	<h2>My Courses</h2>
 	<p id="courses"></p>
@@ -22,14 +24,25 @@
 	<h2>Skipping Iterations</h2>
 	<p id="numberList"></p>
 	<script>
-		var courses = ['Intro to Web Programming', 'Client-Side JavaScript', 'Bitmap & Vector Graphics', 'Web UI Design with CSS', 'Relational Database'];
+		var courses = ['Intro to Web Programming', 'Client-Side JavaScript', 'Bitmap & Vector Graphics',
+			'Web UI Design with CSS', 'Relational Database'
+		];
 		var courseList = 'My courses this term are ';
 		var msg = document.querySelector('#courses');
 		/* STEP 1a: A simple FOR loop
-		A simple loop of this structure needs an initializer (counter variable), an exit conditional, and and incrementor/decrementor */
-
+		A simple loop of this structure needs an initializer (counter variable), 
+		an exit conditional, and and incrementor/decrementor */
 		msg.textContent = courseList;
-		// STEP 1b: Add a conditional for the last item in the array so we can finish the sentence with a period.
+		for (let i = 0; i < courses.length; i++) { // courses[i]
+			console.log(courses[i]);
+			// STEP 1b: Add a conditional for the last item in the array so we can finish the sentence with a period.
+			if (i === courses.length - 1) {
+				msg.textContent += `and ${courses[i]}`;
+			} else {
+				msg.textContent += `${courses[i]}, `;
+			}
+		}
+		// foreach course in courses
 
 		/* STEP 2: Exit a loop with break */
 		var cities = ['Toronto', 'Montreal', 'Ottawa', 'Vancouver', 'Halifax'];
@@ -37,13 +50,13 @@
 		var input = document.querySelector('input');
 		var btn = document.querySelector('button#cities');
 
-		btn.addEventListener('click', function() {
+		btn.addEventListener('click', function () {
 			var searchName = input.value;
 			input.value = '';
 			input.focus();
 			/* STEP 2a: Create a FOR loop to iterate through the cities array */
 
-				/* STEP 2b: Build an IF/ELSE conditional that compares searchName with cities[i] */
+			/* STEP 2b: Build an IF/ELSE conditional that compares searchName with cities[i] */
 
 		});
 
@@ -55,7 +68,7 @@
 		for (var i = 1; i <= num; i++) {
 			var sqRoot = Math.sqrt(i);
 			/* STEP 3a: Build an IF statement that checks whether the square root of the number is NOT an integer */
-			if () {
+			if (true) {
 				/* STEP 3b: If the square root of the number is not an integer, we don't want to output it to the paragraph, so skip the rest of the instructions inside this loop and go back up to the FOR, using 'continue' */
 
 			}
@@ -80,4 +93,5 @@
 		// This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code
 	</script>
 </body>
+
 </html>
